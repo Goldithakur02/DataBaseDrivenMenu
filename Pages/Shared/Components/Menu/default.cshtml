@@ -1,0 +1,26 @@
+@model IList<MenuExample.ViewModels.MenuViewModel>
+@if(Model.Any()){
+    <ul class="navbar-nav flex-grow-1">
+        @foreach (var item in Model)
+        {
+            bool haschild=item?.HasChildMenu??false;
+            <li class="nav-item @(haschild ? "dropdown":string.Empty)">
+                @if(!haschild){
+                    <a class="nav-link text-dark" asp-area="@item.Area" asp-page="@item.Page">@item.Name</a>
+                }
+                else{
+                    <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown@(item.Id)" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @item.Name
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown@(item.Id)">
+                        @foreach (var subitem in item.ChildMenu)
+                        {
+                            <a class="dropdown-item" asp-area="@subitem.Area" asp-page="@subitem.Page">@subitem.Name</a>
+                        }
+                    </div>
+                }
+            </li>
+            
+        }
+    </ul>
+}
