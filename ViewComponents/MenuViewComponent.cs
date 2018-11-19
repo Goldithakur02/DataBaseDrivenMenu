@@ -24,7 +24,7 @@ namespace MenuExample.ViewComponents {
             return _context.Menu.ToListAsync ();
         }
 
-        Func<Menu, int?, bool> PredicateMenu = (e, menuid) => e.ParentMenuId == menuid;
+        Func<Menu, int?, bool> PredicateMenu = (e, menu_id) => e.ParentMenuId == menu_id;
 
         private IList<MenuViewModel> MenuFormat (IList<Menu> menu, int? parentId) {
             return menu.AsQueryable ()
