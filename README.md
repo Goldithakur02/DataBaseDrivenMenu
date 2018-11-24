@@ -1,2 +1,2 @@
 # DataBaseDrivenMenu
-Database driven menu Example in asp.net core 
+Database driven menu example in asp.net core 
